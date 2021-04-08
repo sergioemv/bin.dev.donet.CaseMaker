@@ -1,0 +1,119 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DBF2775A-E210-4AAF-9D22-2A8915AADF21}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CaseMaker</RootNamespace>
+    <AssemblyName>CaseMakerAPL</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>Library</OutputType>
+    <AssemblyName>CaseMakerAPL</AssemblyName>
+    <RootNamespace>CaseMaker</RootNamespace>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <OutputType>Library</OutputType>
+    <AssemblyName>CaseMakerAPL</AssemblyName>
+    <DebugSymbols>true</DebugSymbols>
+    <RootNamespace>CaseMaker</RootNamespace>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CaseMakerDAL\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=1.2.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CaseMakerDAL\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.3.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Archivos de programa\NUnit 2.4.3\bin\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Generation\Combinations\AbstractCombinationGenerator.cs" />
+    <Compile Include="Generation\Combinations\AllPairsAlgorithm.cs" />
+    <Compile Include="Generation\Combinations\AllPairsCombinationsGenerator.cs" />
+    <Compile Include="Generation\IGenerator.cs" />
+    <Compile Include="Generation\Combinations\PermutationCombinationsGenerator.cs" />
+    <Compile Include="Generation\TestCases\AbstractTestCaseGenerator.cs" />
+    <Compile Include="Generation\TestCases\AllTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\OneWiseTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\WorkflowTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\FaultyEquivalenceClassesTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\FaultyCombinationTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\NegativeEquivalenceClassesTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\NegativeCombinationTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\FaultyTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\NegativeTestCasesGenerator.cs" />
+    <Compile Include="Generation\TestCases\PositiveTestCasesGenerator.cs" />
+    <Compile Include="Policies\CombinationManager.cs" />
+    <Compile Include="Policies\StateObjectManager.cs" />
+    <Compile Include="Policies\DependencyManager.cs" />
+    <Compile Include="Policies\PolicyFactory.cs" />
+    <Compile Include="Policies\RiskLevelManager.cs" />
+    <Compile Include="Policies\StructureManager.cs" />
+    <Compile Include="Policies\TestCaseManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\Generation\Combination\AllPairsCombinationGeneratorTest.cs" />
+    <Compile Include="Test\Generation\Combination\PermutationCombinationGeneratorTest.cs" />
+    <Compile Include="Test\Generation\TestCases\AllTestCaseGeneratorTest.cs" />
+    <Compile Include="Test\Generation\TestCases\FaultyTestCaseGeneratorTest.cs" />
+    <Compile Include="Test\Generation\TestCases\NegativeTestCaseGeneratorTest.cs" />
+    <Compile Include="Test\Generation\TestCases\PositiveTestCaseGeneratorTest.cs" />
+    <Compile Include="Test\Policies\CombinationManagerTest.cs" />
+    <Compile Include="Test\Policies\StateObjectManagerTest.cs" />
+    <Compile Include="Test\Policies\RiskLevelManagerTest.cs" />
+    <Compile Include="Test\Policies\TestCaseManagerTest.cs" />
+    <Compile Include="Test\Policies\StructureManagerTest.cs" />
+    <Compile Include="Test\Policies\DependencyManagerTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CaseMakerBL\CaseMakerBL.csproj">
+      <Project>{18DE7545-3146-4447-95D1-9EFD24A8689D}</Project>
+      <Name>CaseMakerBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CaseMakerLOC\CaseMakerLOC.csproj">
+      <Project>{AEBC97FA-6518-4A9A-8826-2F43EA9250C0}</Project>
+      <Name>CaseMakerLOC</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

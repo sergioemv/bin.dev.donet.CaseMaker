@@ -1,0 +1,48 @@
+﻿.wdbCommandButtonStyleActive{	background-color:#8A887B; 	border:1px threeddarkshadow solid;
+	color:White;
+	basestyle:Normal;
+}
+.wdbCommandButtonStyleOver
+{
+	background-color:#C5C2AF; 
+	border:1px threeddarkshadow solid;
+	basestyle:Normal;
+}
+.wdbCommandButtonStyleNormal
+{
+	background-color:buttonface; 
+	border:1px threeddarkshadow solid;
+}
+.wdbContainerStyle{	background-color:White; 	font-family:segoe ui,tahoma;  	font-size:9pt;  	font-weight:normal; 	padding-top:4px; 	padding-right:4px; 	padding-left:4px; 	padding-bottom:4px;
+	width:100%;
+	height:100%;
+}
+.wdbWindowStyleActive{	background-color:White; 	font-family:segoe ui,tahoma;  	font-size:9pt;  	font-weight:normal;	border:3px #B0CFF7 solid;	border-top: 0px #B0CFF7 solid;
+	height:100%;	
+	basestyle:Normal;
+}
+.wdbWindowStyleNormal{	background-color:White; 	font-family:segoe ui,tahoma;  	font-size:9pt;  	font-weight:normal;	border:3px solid;	height:100%;
+}
+.wdbCaptionStyleActive{ 	font-family:segoe ui,tahoma;  	font-size:10pt;  	font-weight:normal;	color:#15428B;	cursor:Default; 	padding-top:3px; 	padding-right:2px; 	padding-left:2px; 
+	padding-bottom:2px;
+	basestyle:Normal;
+}
+.wdbCaptionStyleNormal{ 	font-family:segoe ui,tahoma;  	font-size:10pt;  	font-weight:normal;	cursor:Default; 	padding-top:3px; 	padding-right:2px; 	padding-left:2px; 	padding-bottom:2px;
+}
+.wdbCommandButtonDisabledStyle
+{
+	background-color:buttonface; 	
+	border:1px threeddarkshadow solid;
+	color:Gray;
+}
+.wdbFont
+{
+	font-family:Tahoma;  
+	font-size:8pt;  
+	font-weight:normal;	
+}
+.wdbOverflow
+{
+	overflow:Auto;	overflow-x:Auto;
+	overflow-y:Auto;	
+}

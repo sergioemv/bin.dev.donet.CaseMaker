@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="AbstractCombinationGenerator_ValidateModel_Dependency" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="AbstractCombinationGenerator_ValidateModel_ElementsNeeded" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="AbstractCombinationGenerator_ValidateModel_MaximalNumberOfCombHigh" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="AbstractCombinationGenerator_ValidateModel_NeededEquivalenceClasses" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="DefaultDao_AddNew_ErrorSaving" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="DefaultDao_GetItem_ErrorGetting" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PermutationCombinationGenerator_ValidateModel_Error" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_TestCase_Element_Description" xml:space="preserve">
+    <value>DescriptionGE</value>
+  </data>
+  <data name="PresentationLayer_TestCase_Element_Name" xml:space="preserve">
+    <value>ElementGE</value>
+  </data>
+  <data name="PresentationLayer_TestCase_Element_ObjectTypes" xml:space="preserve">
+    <value>ObjectTypesGE</value>
+  </data>
+  <data name="PresentationLayer_General_Failure" xml:space="preserve">
+    <value>Failure</value>
+  </data>
+  <data name="PresentationLayer_General_Irrelevant" xml:space="preserve">
+    <value>Irrelevant</value>
+  </data>
+  <data name="PresentationLayer_General_Negative" xml:space="preserve">
+    <value>Negativ</value>
+  </data>
+  <data name="PresentationLayer_General_Positive" xml:space="preserve">
+    <value>Positiv</value>
+  </data>
+  <data name="PresentationLayer_TestCase_EquivalenceClass_Description" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_TestCase_EquivalenceClass_Effects" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_TestCase_EquivalenceClass_Name" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_TestCase_EquivalenceClass_State" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_TestCase_EquivalenceClass_Value" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Effect_AddResult" xml:space="preserve">
+    <value>Addieren Sie Erwartetes Resultat</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Effect_ExpectedResults" xml:space="preserve">
+    <value>Sollergebnisse</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Effect_RemoveResults" xml:space="preserve">
+    <value>Entfernen Sie Erwartetes Resultat</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_Add" xml:space="preserve">
+    <value>Addieren Sie Anforderung</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_Assigned" xml:space="preserve">
+    <value>Zugewiesene Anforderungen</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_ErrorMsg" xml:space="preserve">
+    <value>Anforderung ist bereits vorhanden</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_New" xml:space="preserve">
+    <value>Neue Anforderung</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_Remove" xml:space="preserve">
+    <value>Entfernen Sie Anforderung</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Requirements_Requirements" xml:space="preserve">
+    <value>Anforderungen</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_EquivalenceTab_Effects" xml:space="preserve">
+    <value>Wirkungen</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_EquivalenceTab_General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_EffectTab_ExpResults" xml:space="preserve">
+    <value>Sollergebnisse</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_EffectTab_General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_EffectTab_Requirements" xml:space="preserve">
+    <value>Anforderungen</value>
+  </data>
+  <data name="PresentationLayer_General_Description" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_General_GeneratedDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Dependencies_CreateInfo" xml:space="preserve">
+    <value>Die Anzahl der abh\u00E4ngigen Elemente muss 2 oder gr\u00F6\u00DFer sein.</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Dependencies_Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Dependencies_Name" xml:space="preserve">
+    <value>Abh\u00E4ngigkeit</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Combination_AllPairsOrigin" xml:space="preserve">
+    <value>Generiert nach dem Algorithmus der Allen Paaren</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Combination_ManualOrigin" xml:space="preserve">
+    <value>Manuell angeh\u00E4ngt</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Combination_PermutationOrigin" xml:space="preserve">
+    <value>Generiert nach Permutation</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_GenerateCombinations_ByAllPair" xml:space="preserve">
+    <value>Kombinationen durch den AllPairs-Algorithmus erzeugen...</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_GenerateCombinations_ByPermutation" xml:space="preserve">
+    <value>Kombinationen durch Permutation erzeugen...</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_Merge" xml:space="preserve">
+    <value>Kombinationen zusammenlegen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_SeparateMerge" xml:space="preserve">
+    <value>Kombinationen trennen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Dependency_Create" xml:space="preserve">
+    <value>Abh\u00E4ngigkeit erstellen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Dependency_Delete" xml:space="preserve">
+    <value>Abh\u00E4ngigkeit l\u00F6schen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Dependency_Edit" xml:space="preserve">
+    <value>Abh\u00E4ngigkeit bearbeiten</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_Create" xml:space="preserve">
+    <value>Kombination erzeugen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_Delete" xml:space="preserve">
+    <value>Ausgew\u00E4hlte Kombination l\u00F6schen</value>
+  </data>
+  <data name="PresentationLayer_Button_ToolTip_Combinations_Edit" xml:space="preserve">
+    <value>Kombination bearbeiten</value>
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Dependencies_DependentElements" xml:space="preserve">
+    <value>--&gt; Abh\u00E4ngiges Element:</value>
+  </data>
+  <data name="cadena" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="PresentationLayer_WorkSpace_Project_TestObject_Combination_ErrorMsg" xml:space="preserve">
+    <value>Die Kombination existiert bereits\! Bitte versuchen Sie eine nicht bereits existierende Kombination zu bilden.</value>
+  </data>
+  <data name="PresentationLayer_Button_Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="PresentationLayer_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+</root>

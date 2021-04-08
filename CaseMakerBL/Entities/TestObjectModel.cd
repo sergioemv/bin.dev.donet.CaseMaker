@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CaseMaker.Entities.TestObject" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <AssociationLine Name="TestCasesStruct" Type="CaseMaker.Entities.Testcases.TestCasesStructure">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.4" Y="-0.279" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>YAACAGAAAAAgAAYEpwAAQAUAIEgEAOAIAIBACAAAAgA=</HashCode>
+      <FileName>Entities\TestObject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestCasesStruct" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.ToolVendor" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <AssociationLine Name="ToolTypes" Type="CaseMaker.Entities.ToolType" FixedToPoint="true">
+      <Path>
+        <Point X="5.375" Y="1.13" />
+        <Point X="5.375" Y="2" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.17" Y="0.189" Height="0.16" Width="0.957" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQEgAAAAAQAAAAEAIAAAAAQAAAAEgA=</HashCode>
+      <FileName>Entities\ToolVendor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ToolTypes" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.978" />
+  </Class>
+  <Class Name="CaseMaker.Entities.ToolType" Collapsed="true">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQEgAAAAAQAAEAEAIBAAAAAAAAAAgA=</HashCode>
+      <FileName>Entities\ToolType.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ToolItems" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Orientation="Right" Position="0.124" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.ToolItem" Collapsed="true">
+    <Position X="7" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAQEgAAAAAQAAAAEAIAAAAAAAAAAAgA=</HashCode>
+      <FileName>Entities\ToolItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Right" Position="0.187" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.TestCasesStructure" Collapsed="true">
+    <Position X="2.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>wBACEMAAAIJBJZSFgQQQAEEEAAJKEIACAhAAAAAQCig=</HashCode>
+      <FileName>Entities\Testcases\TestCasesStructure.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentTestObject" />
+    </ShowAsAssociation>
+    <Lollipop Orientation="Right" Position="0.131" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.TestObjectOrigin" Collapsed="true">
+    <Position X="2" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACQAgAAAAAAAAAAAAAgAAAAIAAAAIAA=</HashCode>
+      <FileName>Entities\TestObjectOrigin.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestObject" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases">
+  <class name="StdCombination" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+    <property name="Description" type="string"  column="description" not-null="false" />
+    <property name="Position" type="int"  column="position" not-null="true"  />
+    <many-to-one name="ParentStructure"
+      class="TestCasesStructure"
+      column="structureid"/>
+    <bag name="TestCases" cascade="save-update" generic="true" inverse="true">
+      <key column="stdcombinationid"/>
+      <one-to-many class="TestCase"/>
+    </bag>
+	  <bag name="EquivalenceClasses" table="StdCombs_EqClasses" cascade="save-update" lazy ="true">
+		  <key column="stdcombinationid"/>
+		  <many-to-many column="equivalenceclassid" class="EquivalenceClass"/>
+	  </bag>
+  </class>
+</hibernate-mapping>

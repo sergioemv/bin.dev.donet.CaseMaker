@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities" 
+		default-lazy="false"			>
+
+	<class name="TestObject" >
+		<id name="Id" column ="id" type="int" >
+			<generator class="identity"/>
+		 </id>
+    <property name="Name" column="name" type="string" not-null="true"/>
+    <property name="Description" column="description" type="string" />
+    <property name="Preconditions" column="precondition" type="string" />
+    <property name="DecimalSeparator" column="decimalSeparator" type="string" />
+    <property name="ThousandSeparator" column="thousandSeparator" type="string" />
+    <property name="Version" column="version" type="string" />
+    <property name="CreationDate" column="creationDate" type="DateTime" />
+    <property name="ModDate" column="modDate" type="DateTime" />
+    <one-to-one name ="TestCasesStruct" class="CaseMaker.Entities.Testcases.TestCasesStructure"  fetch="join" />
+    <set name="Permissions" cascade="all-delete-orphan" generic="true" inverse="true" lazy="true" >
+      <key column="testObject" />
+      <one-to-many class="CaseMaker.Entities.Administration.Permission" />
+    </set>
+  </class>
+	
+</hibernate-mapping>

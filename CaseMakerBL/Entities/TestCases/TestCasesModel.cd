@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="CaseMaker.Entities.Testcases.TestCasesStructure" Collapsed="true">
+    <Position X="2" Y="2" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\TestCasesStructure.cs</FileName>
+      <HashCode>wBACEMAAAIJBJZSFgQQQAEEEAAJKEIACAhAAAAAQAig=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Elements" />
+      <Property Name="Effects" />
+      <Property Name="Requirements" />
+      <Property Name="Dependencies" />
+      <Property Name="TestCases" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Elements" Type="CaseMaker.Entities.Testcases.Element" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="3.312" Y="2.63" />
+        <Point X="3.188" Y="2.63" />
+        <Point X="3.188" Y="3.125" />
+        <Point X="3.125" Y="3.125" />
+        <Point X="3.125" Y="3.688" />
+        <Point X="3.25" Y="3.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-0.683" Y="0.333" Height="0.16" Width="0.901" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Effects" Type="CaseMaker.Entities.Testcases.Effect" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.625" Y="2.63" />
+        <Point X="2.625" Y="6.065" />
+        <Point X="5.75" Y="6.065" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.806" Y="-0.029" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Requirements" Type="CaseMaker.Entities.Testcases.Requirement" FixedFromPoint="true">
+      <Path>
+        <Point X="2.438" Y="2.63" />
+        <Point X="2.438" Y="6.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.047" Y="0.642" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Dependencies" Type="CaseMaker.Entities.Testcases.Dependency" FixedFromPoint="true">
+      <Path>
+        <Point X="3.75" Y="2.375" />
+        <Point X="6.5" Y="2.375" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.958" Y="-0.08" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="TestCases" Type="CaseMaker.Entities.Testcases.TestCase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.891" Y="2" />
+        <Point X="2.891" Y="1.334" />
+        <Point X="6.649" Y="1.334" />
+        <Point X="6.649" Y="1.375" />
+        <Point X="8.5" Y="1.375" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.52" Y="-0.65" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.Element" Collapsed="true">
+    <Position X="3.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\Element.cs</FileName>
+      <HashCode>AAICACAgAACgAAQkoAAAIAQEAAAEBIAAAACQAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Structure" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="EquivalenceClasses" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Structure" Type="CaseMaker.Entities.Testcases.TestCasesStructure" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.062" Y="3.5" />
+        <Point X="4.062" Y="3.125" />
+        <Point X="3.688" Y="3.125" />
+        <Point X="3.688" Y="2.63" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="-2.065" Y="1.037" Height="0.16" Width="1.066" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="EquivalenceClasses" Type="CaseMaker.Entities.Testcases.EquivalenceClass" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="4.062" />
+        <Point X="5.812" Y="4.062" />
+        <Point X="5.812" Y="4.75" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.192" Y="0.289" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.EquivalenceClass" Collapsed="true">
+    <Position X="5.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\EquivalenceClass.cs</FileName>
+      <HashCode>CAACAAgAAACgAYQkoAQAIAQkAABAAKAAQAAgAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EqState" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Effects" Type="CaseMaker.Entities.Testcases.Effect">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.247" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.Effect" Collapsed="true">
+    <Position X="5.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\Effect.cs</FileName>
+      <HashCode>CBCCAEgABAhgAAQkoAAAIAQgBAIAAIAGAAAAAAAAAiA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="EffectState" />
+      <Property Name="ParentStructure" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Requirements" />
+      <Property Name="ExpectedResults" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Requirements" Type="CaseMaker.Entities.Testcases.Requirement" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="6.25" />
+        <Point X="5.375" Y="6.25" />
+        <Point X="5.375" Y="6.688" />
+        <Point X="3.5" Y="6.688" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.029" Y="-1.686" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ParentStructure" Type="CaseMaker.Entities.Testcases.TestCasesStructure" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="5.876" />
+        <Point X="2.938" Y="5.876" />
+        <Point X="2.938" Y="2.63" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.608" Y="0.825" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="ExpectedResults" Type="CaseMaker.Entities.Testcases.ExpectedResult" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.812" Y="6.38" />
+        <Point X="5.812" Y="7.565" />
+        <Point X="3.5" Y="7.565" />
+      </Path>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.Requirement" Collapsed="true">
+    <Position X="2" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\Requirement.cs</FileName>
+      <HashCode>AAACAAAABAAAAAQEgAAAAAQABAAEAIAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.ExpectedResult" Collapsed="true">
+    <Position X="2" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\ExpectedResult.cs</FileName>
+      <HashCode>AAACAAAAAACAAAQEgAAACAQAAAAEAIAAAAAACAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.Dependency" Collapsed="true">
+    <Position X="6.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\Dependency.cs</FileName>
+      <HashCode>AAICAiAABAChABQkoAAQKAQgBAACAIACAACQABAAAgI=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentStructure" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Elements" />
+      <Property Name="EquivalenceClasses" />
+      <Property Name="Combinations" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Elements" Type="CaseMaker.Entities.Testcases.Element" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="6.625" Y="2.63" />
+        <Point X="6.625" Y="3.75" />
+        <Point X="4.75" Y="3.75" />
+      </Path>
+    </AssociationLine>
+    <AssociationLine Name="EquivalenceClasses" Type="CaseMaker.Entities.Testcases.EquivalenceClass" FixedFromPoint="true">
+      <Path>
+        <Point X="7" Y="2.63" />
+        <Point X="7" Y="5.161" />
+        <Point X="6.75" Y="5.161" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.71" Y="-0.997" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="Combinations" Type="CaseMaker.Entities.Testcases.Combination" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.531" Y="2.63" />
+        <Point X="7.531" Y="3" />
+        <Point X="8.5" Y="3" />
+        <Point X="8.5" Y="3.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.066" Y="0.536" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.Combination" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\Combination.cs</FileName>
+      <HashCode>CAMKAigAAACgAYQkoAQAIAQkAAEAAIAEAACQBBgAAgI=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CombState" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Combinations" />
+      <Property Name="Effects" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="Effects" Type="CaseMaker.Entities.Testcases.Effect" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8" Y="3.812" />
+        <Point X="7.625" Y="3.812" />
+        <Point X="7.625" Y="5.902" />
+        <Point X="7.25" Y="5.902" />
+      </Path>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.TestCase" Collapsed="true">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\TestCase.cs</FileName>
+      <HashCode>CAICAigEBACgBAQmoAAAIgQgBAAAAIAAAACQABgAAgI=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentStructure" />
+      <Property Name="TestCaseState" />
+      <Property Name="AssignedStdCombination" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Combinations" />
+      <Property Name="EquivalenceClasses" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="ParentStructure" Type="CaseMaker.Entities.Testcases.TestCasesStructure" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="8.5" Y="1.625" />
+        <Point X="3.344" Y="1.625" />
+        <Point X="3.344" Y="2" />
+      </Path>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.StdCombination" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\StdCombination.cs</FileName>
+      <HashCode>ABICACAABAAgAAQkoAAAIAQgBAAAEIAAAhCQAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ParentStructure" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="EquivalenceClasses" />
+      <Property Name="TestCases" />
+    </ShowAsCollectionAssociation>
+    <AssociationLine Name="TestCases" Type="CaseMaker.Entities.Testcases.TestCase" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="1.062" />
+        <Point X="6.355" Y="1.062" />
+        <Point X="6.355" Y="1.138" />
+        <Point X="7.792" Y="1.138" />
+        <Point X="7.792" Y="1" />
+        <Point X="8.562" Y="1" />
+      </Path>
+    </AssociationLine>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="CaseMaker.Entities.Testcases.State" Collapsed="true">
+    <Position X="8" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\State.cs</FileName>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

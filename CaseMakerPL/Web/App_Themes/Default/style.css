@@ -1,0 +1,139 @@
+﻿/**************************************
+General styles
+**************************************/
+
+body
+{
+	background-color: #84B8DB;
+	margin-left: 1px;
+	margin-right: 1px;
+	margin-top: 6px;
+	margin-bottom: 3px; /*text-align: center;*/ /*vertical-align: middle;*/
+	width: 100%;
+	height: 100%;
+}
+
+img
+{
+	border: none;
+}
+.zindez0
+{
+	z-index: 0;
+}
+
+div.ContainerDataPanel
+{
+	position: relative;
+	width: 90%;
+	height: 90%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+div.basicDivAllocate
+{
+	width: 100%; /*border: 1px solid;*/
+}
+
+
+.centerElement
+{
+	text-align: center;
+	width: 98%;
+}
+
+.centerElementMiddle
+{
+	text-align: center;
+	width: 50%;
+}
+
+.elementMiddle
+{
+	width: 50%;
+}
+
+
+.maximunSize
+{
+	width: 100%;
+	height: 100%; /*border: 1px solid;*/
+}
+
+.maximunSizeCenter
+{
+	width: 100%;
+	height: 100%;
+	text-align: center; /*border: 1px solid;*/
+}
+
+
+/**************************************
+Master page
+**************************************/
+/*background container*/
+
+div.divBackground
+{
+	z-index: 0;
+	text-align: center;
+	vertical-align: middle;
+	margin: 0px;
+}
+
+
+
+
+/*Splitters and divisors*/
+table.tableMainApp
+{
+	width: 980px;
+	height: 520px;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+
+td.appPanelLeft
+{
+	width: 20%;
+}
+
+td.appDivisorVertical
+{
+	width: 100px;
+}
+
+td.appPanelRight
+{
+	width: 80%;
+	height: 100%;
+}
+
+table.tableMainLeft
+{
+	border: 0px;
+	width: 100%;
+	height: 100%;
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+td.ContentTop
+{
+	background-color: palegreen;
+}
+td.ContentBottom
+{
+	background-color: mediumturquoise;
+}
+
+/**************************************
+ testUCEffect_Options containers
+**************************************/
+div.ContainerEffectOptions
+{
+	width: 510px;
+	height: 300px;
+	/*border: 1px solid;*/
+}

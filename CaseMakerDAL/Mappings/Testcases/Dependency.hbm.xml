@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases">
+  <class name="Dependency" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+    <property name="Description" type="string"  column="description" not-null="false" />
+	<property name="Position" type="int"  column="position" not-null="true" />
+    <many-to-one name="ParentStructure"
+      class="TestCasesStructure"
+      column="structureid"/>
+	  
+    <bag name="Elements" table="Deps_Elems" cascade="none">
+      <key column="dependencyid"/>
+      <many-to-many column="elementid" class="Element"/>
+    </bag>
+
+    <bag name="EquivalenceClasses" table="Deps_EqClasses" cascade="none">
+      <key column="dependencyid"/>
+      <many-to-many column="eqclassid" class="EquivalenceClass"/>
+    </bag>
+	  
+	  <bag name="Combinations" cascade="all-delete-orphan" generic="true" inverse="true" lazy="true">
+		  <key column="dependencyid" />
+		  <!--<index column="id"/>-->
+		  <one-to-many class="Combination" />
+	  </bag>
+
+  </class>
+</hibernate-mapping>

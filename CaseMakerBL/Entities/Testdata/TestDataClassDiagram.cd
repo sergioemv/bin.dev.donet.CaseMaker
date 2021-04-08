@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="CaseMaker.Entities.Testdata.TestDataStructure" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\TestDataStructure.cs</FileName>
+      <HashCode>QAAKAEAECACiBISAoACAAAQAAAIEEAgAABQIAAAEAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestObject" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="TestCases" />
+      <Property Name="Variables" />
+      <Property Name="StructureTypeDatas" />
+      <Property Name="TestDataSets" />
+      <Property Name="TestDatas" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testdata.StructureTypeData" Collapsed="true">
+    <Position X="7.25" Y="4.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\StructureTypeData.cs</FileName>
+      <HashCode>AAACYAAEAGAgRAQAoAAAAAQABAAFAAAAAQAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="testDataStructure" />
+      <Property Name="TestDataStructure" />
+      <Property Name="TestData" />
+    </ShowAsAssociation>
+    <Members>
+      <Field Name="testDataStructure" Hidden="true" />
+    </Members>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testdata.TestData" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.25" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\TestData.cs</FileName>
+      <HashCode>CAACAAgAAABiAASQoAAAABQAIABEACAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="StructureTypeDatas" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testdata.TestDataSet" Collapsed="true">
+    <Position X="4.25" Y="8.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\TestDataSet.cs</FileName>
+      <HashCode>AAACgAAAAAEgQAQAoAAAgAQABAAEAQAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TestDataStructure" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.TestObject" Collapsed="true">
+    <Position X="1.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\TestObject.cs</FileName>
+      <HashCode>YAACAGAAAAAgAAYEpwAAQAUAIEgEAOAIAIBACAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testcases.TestCase" Collapsed="true">
+    <Position X="7.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\TestCase.cs</FileName>
+      <HashCode>CAICAigEBACgBAQmoAAAIgQgBAAAAIAAAACQABgAAgI=</HashCode>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CaseMaker.Entities.Testdata.Variable" Collapsed="true">
+    <Position X="4.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\Variable.cs</FileName>
+      <HashCode>gAACAAAAAAAgQAQAoIAAAATABAAEQAAAAAAAAAAAAgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ICMValue" />
+      <Property Name="TestDataFormat" />
+      <Property Name="TestDataStructure" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="CaseMaker.Entities.Testdata.ITypeData" Collapsed="true">
+    <Position X="8.25" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\ITypeData.cs</FileName>
+      <HashCode>AAAAAIAAAAAAAASAgIABAARCAAAAAEAAAAAAAAQBgAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ICMValue" />
+      <Property Name="StructureTypeData" />
+      <Property Name="ITestDataFormat" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="CaseMaker.Entities.Testdata.ICMValue" Collapsed="true">
+    <Position X="8.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\ICMValue.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CaseMaker.Entities.Testdata.ITestDataFormat" Collapsed="true">
+    <Position X="5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <FileName>Entities\Testdata\ITestDataFormat.cs</FileName>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAQAABAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="CaseMaker.Entities.Testcases.TestCaseOrigin" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Entities\Testcases\TestCase.cs</FileName>
+      <HashCode>AAAAAACAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Enum>
+</ClassDiagram>

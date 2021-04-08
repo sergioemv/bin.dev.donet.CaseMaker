@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases">
+  <class name="Effect" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+    <property name="Description" type="string"  column="description" not-null="false" />
+    <property name="Position" type="int"  column="position" not-null="true"  />
+	  <property name="CurrentState"  column="state"  />
+	  <property name="RiskLevel" type="int"  column="risklevel" not-null="true"  />
+    <many-to-one name="ParentStructure"
+      class="TestCasesStructure"
+      column="structureid"/>
+    <bag name="Requirements" table="Effects_Reqs" cascade="none">
+      <key column="effectid"/>
+      <many-to-many column="requirementid" class="Requirement"/>
+    </bag>
+    <bag name="ExpectedResults" cascade="all-delete-orphan" generic="true" inverse="true">
+      <key column="effectid"/>
+      <one-to-many class="ExpectedResult"/>
+    </bag>
+  </class>
+</hibernate-mapping>

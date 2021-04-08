@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5b0f03e4-fda6-4979-87c9-89094566b4fe" ChangeDateTime="04/08/2021 13:02:03">
+    <Property Name="ElementName" Value="[dbo].[Element].[IX_Element_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Element]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_testObject_name]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8826e55e-d66f-43e7-8bb0-6a4603a8b1b3" ChangeDateTime="04/08/2021 13:02:38">
+    <Property Name="ElementName" Value="[dbo].[EquivalenceClass].[IX_EquivalenceClass_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[EquivalenceClass]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_EquivalenceClass_ElementId_position]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="e39c585c-1f78-4f5e-8d69-6c8860d00fa4" ChangeDateTime="04/08/2021 13:02:54">
+    <Property Name="ElementName" Value="[dbo].[Element].[IX_testObject_name]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[Element]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_Element_testObject_name]" />
+  </Operation>
+</Operations>

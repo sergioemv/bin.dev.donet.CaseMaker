@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StoraDataList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ChildList>
+    <StoreData>
+      <Key>root_path</Key>
+      <Value>http://localhost:2057/Web/</Value>
+    </StoreData>
+    <StoreData>
+      <Key>theme</Key>
+      <Value>Default</Value>
+    </StoreData>
+    <StoreData>
+      <Key>version_number</Key>
+      <Value>0.1</Value>
+    </StoreData>
+  </ChildList>
+</StoraDataList>

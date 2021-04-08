@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases">
+  <class name="ExpectedResult" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+    <discriminator column ="type" type="string"/>
+    <property name="Name" type="string"  column="name" not-null="true" />
+    <many-to-one name="ParentEffect"
+        class="Effect"
+        column="effectid"/>
+    <subclass name="ExpectedNumberResult" discriminator-value="NUMBER">
+      <property name="NumberValue" type="float" />       
+      </subclass>
+    <subclass name="ExpectedStringResult" discriminator-value="STRING">
+      <property name="StringValue" type="string" />
+    </subclass>
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Administration">
+  <class name="Permission" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+	  <discriminator column ="type" type="string"/>
+	  <many-to-one name="UserOwner" class="User" column="UserLogin"/>
+	<property name="Nature" type="int"  column="permissionNature" not-null="true"  />	  
+    <subclass name="TestCasesStructurePermission" discriminator-value="TCSTRUCTURE">
+      <many-to-one name="Structure" class="CaseMaker.Entities.Testcases.TestCasesStructure" column="structure"/>
+      </subclass>
+    <subclass name="TestObjectPermission" discriminator-value="TESTOBJECT">
+      <many-to-one name="PermittedTestObject" class="CaseMaker.Entities.TestObject" column="testObject"/>
+    </subclass>
+  </class>
+</hibernate-mapping>

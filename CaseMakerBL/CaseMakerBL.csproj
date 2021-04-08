@@ -1,0 +1,169 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{18DE7545-3146-4447-95D1-9EFD24A8689D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CaseMaker</RootNamespace>
+    <AssemblyName>CaseMakerBL</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=1.0.0.3, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CaseMakerDAL\lib\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=1.2.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\CaseMakerDAL\lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.6.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Administration\ApplicationRole.cs" />
+    <Compile Include="Edits\AbstractUndoableEdit.cs" />
+    <Compile Include="Edits\CompoundEdit.cs" />
+    <Compile Include="Edits\EditFactory.cs" />
+    <Compile Include="Edits\IEditFactory.cs" />
+    <Compile Include="Edits\IUndoableEdit.cs" />
+    <Compile Include="Edits\DefaultEdit.cs" />
+    <Compile Include="Edits\LimitQueueEdit.cs" />
+    <Compile Include="Entities\Administration\TestCasesStructurePermission.cs" />
+    <Compile Include="Entities\Administration\TestObjectPermission.cs" />
+    <Compile Include="Entities\EntityWithEvents.cs" />
+    <Compile Include="Entities\IAuditable.cs" />
+    <Compile Include="Entities\Testcases\Combination.cs" />
+    <Compile Include="Entities\Testcases\ExpectedNumberResult.cs" />
+    <Compile Include="Entities\Testcases\ExpectedStringResult.cs" />
+    <Compile Include="Entities\Testcases\IDependencyBean.cs" />
+    <Compile Include="Entities\Testcases\IEffectsBean.cs" />
+    <Compile Include="Entities\Testcases\IEquivalenceClassesBean.cs" />
+    <Compile Include="Entities\Testcases\Dependency.cs" />
+    <Compile Include="Entities\Testcases\Effect.cs" />
+    <Compile Include="Entities\Testcases\Element.cs" />
+    <Compile Include="Entities\Testcases\EquivalenceClass.cs" />
+    <Compile Include="Entities\Testcases\ExpectedResult.cs" />
+    <Compile Include="Entities\Testcases\ICombinationsBean.cs" />
+    <Compile Include="Entities\Testcases\IElementsBean.cs" />
+    <Compile Include="Entities\Testcases\IRequirementsBean.cs" />
+    <Compile Include="Entities\Testcases\IRiskLevelObject.cs" />
+    <Compile Include="Entities\Testcases\IStateObject.cs" />
+    <Compile Include="Entities\Testcases\IStdCombinationsBean.cs" />
+    <Compile Include="Entities\Testcases\ITestCasesBean.cs" />
+    <Compile Include="Entities\Testcases\Requirement.cs" />
+    <Compile Include="Entities\Testcases\StdCombination.cs" />
+    <Compile Include="Entities\Testcases\TestCase.cs" />
+    <Compile Include="Entities\Testcases\TestCasesStructure.cs" />
+    <Compile Include="Entities\Testdata\CMAbstractFormula.cs" />
+    <Compile Include="Entities\Testdata\CMDefaultParameter.cs" />
+    <Compile Include="Entities\Testdata\CMDefaultValue.cs" />
+    <Compile Include="Entities\Testdata\CMFormulaCategory.cs" />
+    <Compile Include="Entities\Testdata\CMFormulas.cs" />
+    <Compile Include="Entities\Testdata\CMLinkElement.cs" />
+    <Compile Include="Entities\Testdata\CMTestDataDateTimeFormat.cs" />
+    <Compile Include="Entities\Testdata\CMTestDataNumberFormat.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMAbsFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMAddDayFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMAddMonthFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMAddYearFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMCeilFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDateFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDateNowFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDayWeekFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDiffDateFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDifferenceFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMDivFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMExpFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMFactFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMFloorFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMHourFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMLnFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMLog10Formula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMLogFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMMaxFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMMinFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMMonthFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMPowFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMProductFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMRandomFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMSecondFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMTodayFormula.cs" />
+    <Compile Include="Entities\Testdata\Formula\CMYearFormula.cs" />
+    <Compile Include="Entities\Testdata\ICMFormula.cs" />
+    <Compile Include="Entities\Testdata\ICMParameter.cs" />
+    <Compile Include="Entities\Testdata\ICMValue.cs" />
+    <Compile Include="Entities\Testdata\ITestDataFormat.cs" />
+    <Compile Include="Entities\Testdata\ITypeData.cs" />
+    <Compile Include="Entities\Testdata\StructureTypeData.cs" />
+    <Compile Include="Entities\Testdata\TestData.cs" />
+    <Compile Include="Entities\Testdata\TestDataCombination.cs" />
+    <Compile Include="Entities\Testdata\TestDataSet.cs" />
+    <Compile Include="Entities\Testdata\TestDataSetReportUnit.cs" />
+    <Compile Include="Entities\Testdata\TestDataStructure.cs" />
+    <Compile Include="Entities\Testdata\TypeDataGlobal.cs" />
+    <Compile Include="Entities\Testdata\TypeDataLocal.cs" />
+    <Compile Include="Entities\Testdata\Variable.cs" />
+    <Compile Include="Entities\ToolItem.cs" />
+    <Compile Include="Entities\ToolType.cs" />
+    <Compile Include="Entities\Utils\EntityNamer.cs" />
+    <Compile Include="Entities\Utils\IdSet.cs" />
+    <Compile Include="Entities\Administration\Permission.cs" />
+    <Compile Include="Entities\Administration\PermissionNature.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Entities\TestObject.cs" />
+    <Compile Include="Entities\TestObjectOrigin.cs" />
+    <Compile Include="Entities\ToolVendor.cs" />
+    <Compile Include="Entities\Testcases\State.cs" />
+    <Compile Include="Test\Edits\CompoundEditTest.cs" />
+    <Compile Include="Test\Edits\LimitQueueEditTest.cs" />
+    <Compile Include="Test\Edits\EditFactoryTest.cs" />
+    <Compile Include="Test\Entities\TestCases\CombinationTest.cs" />
+    <Compile Include="Test\Entities\TestCases\StdCombinationTest.cs" />
+    <Compile Include="Test\Entities\TestCases\TestCaseTest.cs" />
+    <Compile Include="Test\Entities\Utils\EntityNamerTest.cs" />
+    <Compile Include="Entities\Administration\User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Entities\Administration\Adninistration.cd" />
+    <None Include="Entities\Testcases\TestCasesModel.cd" />
+    <None Include="Entities\Testdata\TestDataClassDiagram.cd" />
+    <None Include="Entities\TestObjectModel.cd" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

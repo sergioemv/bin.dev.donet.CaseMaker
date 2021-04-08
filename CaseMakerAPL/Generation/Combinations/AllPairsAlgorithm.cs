@@ -1,0 +1,703 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Text;
+
+namespace CaseMaker.Generation.Combinations
+{
+    public class AllPairsAlgorithm
+    {
+        private readonly ArrayList allPairsCombinations = new ArrayList();
+        private int count = 1;
+        private ArrayList labelsArray;
+        private readonly Dictionary<String, IList> labelsHt = new Dictionary<String, IList>();
+        private readonly ArrayList listorderArray = new ArrayList();
+        private readonly Dictionary<String, int> listorderHt = new Dictionary<String, int>();
+        private readonly Dictionary<String, IList> lists = new Dictionary<String, IList>();
+        private String[] neededvalues;
+        private readonly Hashtable pairs = new Hashtable();
+        private readonly Hashtable pairscases = Hashtable.Synchronized(new Hashtable());
+        private String slug = "";
+        private String[] vars;
+       private readonly String[] zeros = new String[] {"", "0", "00", "000"};                         
+
+       public virtual ArrayList generateAllPairsCombinations(List<string> p_UseCaseData)
+        {
+            maketables(p_UseCaseData, "tables");
+                //# read the data file and fill the arrays with each variable. //$NON-NLS-1$
+            populate(); //# make the checklists for the pairs.
+            //# This loop creates the "slug" which is the blank test case filled in by the recursive FINDNEXT routine.
+            StringBuilder sBuffer = new StringBuilder();
+            for (int c = 0; c < vars.Length; c++)
+            {
+                sBuffer.Append("x\t"); 
+            }
+            sBuffer.Remove(sBuffer.Length - 1, 1);
+            slug = sBuffer.ToString();
+
+
+            labelsArray = gettable1("tables", "labels"); 
+            //ArrayList originalLabelsArray = (ArrayList) labelsArray.clone();	
+            ArrayList originalLabelsArray = new ArrayList();
+            originalLabelsArray.AddRange(labelsArray);
+            originalLabelsArray.Sort(new AnonymousClassComparator(this));
+
+            //# find each test case, then show the status of all the pairings
+            //#
+            while (more())
+            {
+                neededvalues = new String[vars.Length];
+                String casef = findnext(slug);
+                StringBuilder sBuffer2 = new StringBuilder();
+                sBuffer2.Append(count);
+                sBuffer2.Append("\t"); //$NON-NLS-1$
+
+                String combinationString = readable(casef);
+                sBuffer2.Append(combinationString);
+                sBuffer2.Append(score(casef));
+                checkin(casef, count++);
+            }
+            status();
+            return allPairsCombinations;
+        }
+
+
+        //# This routine counts the unique pairings in a test case.
+        //#
+
+        private int score(String p_Case)
+        {
+            int score = 0;
+            Char patternStr = '\t'; //$NON-NLS-1$
+            String[] casevalues = p_Case.Split(patternStr);
+            int c = 0;
+            int v = 0;
+
+            for (c = 0; c < vars.Length - 1; c++)
+            {
+                for (v = c + 1; v < vars.Length; v++)
+                {
+                    StringBuilder cvIndexBuffer = new StringBuilder();
+                    cvIndexBuffer.Append(c);
+                    cvIndexBuffer.Append("-"); //$NON-NLS-1$
+                    cvIndexBuffer.Append(v);
+
+                    StringBuilder caseValuesIndexBuffer = new StringBuilder();
+                    caseValuesIndexBuffer.Append(casevalues[c]);
+                    caseValuesIndexBuffer.Append("-"); //$NON-NLS-1$
+                    caseValuesIndexBuffer.Append(casevalues[v]);
+                    Hashtable h1 = (Hashtable) pairs[cvIndexBuffer.ToString()];
+                    Int32 caseValue = (Int32) h1[caseValuesIndexBuffer.ToString()];
+                    if (caseValue == 0)
+                    {
+                        score++;
+                    }
+                }
+            }
+            return score;
+        }
+
+        //# This routine records all the new pairings in a test case in the checklists.
+        //#
+        //UPGRADE_ISSUE: The following fragment of code could not be parsed and was not converted. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1156'"
+    
+        private void checkin(String p_Case, int p_Count)
+        {
+            int c = 0;
+            int v = 0;
+            int casenumber = p_Count;
+
+            String[] casevalues = p_Case.Split('\t'); //$NON-NLS-1$
+
+            for (c = 0; c < vars.Length - 1; c++)
+            {
+                for (v = c + 1; v < vars.Length; v++)
+                {
+                    StringBuilder cvIndex = new StringBuilder();
+                    cvIndex.Append(c);
+                    cvIndex.Append("-"); //$NON-NLS-1$
+                    cvIndex.Append(v);
+                    StringBuilder caseValuesIndex = new StringBuilder();
+                    caseValuesIndex.Append(casevalues[c]);
+                    caseValuesIndex.Append("-"); //$NON-NLS-1$
+                    caseValuesIndex.Append(casevalues[v]);
+                    Hashtable h1 = (Hashtable) pairs[cvIndex.ToString()];
+                    Int32 pairValue = (Int32) h1[caseValuesIndex.ToString()];
+                    if (h1.ContainsKey(caseValuesIndex.ToString()))
+                        h1.Remove(caseValuesIndex.ToString());
+                    h1.Add(caseValuesIndex.ToString(), pairValue + 1);
+
+                    Hashtable h2 = (Hashtable) pairscases[cvIndex.ToString()];
+                    if (h2 == null)
+                    {
+                        h2 = Hashtable.Synchronized(new Hashtable());
+                        pairscases[cvIndex.ToString()] = h2;
+                    }
+                    ArrayList arrayOfCaseNumbers = (ArrayList) h2[caseValuesIndex.ToString()];
+                    if (arrayOfCaseNumbers == null)
+                    {
+                        arrayOfCaseNumbers = new ArrayList();
+                        h2[caseValuesIndex.ToString()] = arrayOfCaseNumbers;
+                    }
+                    arrayOfCaseNumbers.Add(casenumber);
+                }
+            }
+        }
+
+        //# This routine creates the checklists of pairs.
+        //#
+
+        private void populate()
+        {
+            int c = 0;
+            int v = 0;
+            int x = 0;
+            int y = 0;
+
+
+            for (c = 0; c < vars.Length - 1; c++)
+            {
+                for (v = c + 1; v < vars.Length; v++)
+                {
+                    Hashtable h = new Hashtable();
+                    Int32 tempInteger1 = Int32.Parse(vars[c]);
+                    for (x = 0; x < tempInteger1; x++)
+                    {
+                        Int32 tempInteger2 = Int32.Parse(vars[v]);
+                        for (y = 0; y < tempInteger2; y++)
+                        {
+                            StringBuilder xyIndex = new StringBuilder();
+                            xyIndex.Append(x);
+                            xyIndex.Append("-"); //$NON-NLS-1$
+                            xyIndex.Append(y);
+
+                            StringBuilder cvIndex = new StringBuilder();
+                            cvIndex.Append(c);
+                            cvIndex.Append("-"); //$NON-NLS-1$
+                            cvIndex.Append(v);
+
+                            if (h.Contains(xyIndex.ToString()))
+                                h.Remove(xyIndex.ToString());
+                            h.Add(xyIndex.ToString(), 0);
+
+                            if (pairs.Contains(cvIndex.ToString()))
+                                pairs.Remove(cvIndex.ToString());
+                            pairs.Add(cvIndex.ToString(), h);
+                        }
+                    }
+                }
+            }
+        }
+
+        //# This recursive routine walks through all the values of all the variables, trying to construct
+        //# a test case with the highest number of unique pairings.
+        private String findnext(String p_Slug)
+        {
+            int c = 0;
+            int v = 0;
+            int x = 0;
+            int y = 0;
+            String caseSlug = p_Slug;
+            String[] casevalues = caseSlug.Split('\t'); 
+            int[] scores;
+            String[] scorestrings;
+            String best = "x"; 
+
+
+            //# find the unfinished part of the test case.
+            for (c = 0; c < vars.Length; c++)
+            {
+                if (casevalues[c].Equals("x"))
+                {
+                    break;
+                }
+            }
+            if (c == vars.Length)
+            {
+                return caseSlug;
+            }
+
+            //# but if no part is unfinished, then we're done.
+            //# let's walk through the values for the particular variable we have to choose.
+            Int32 integerTemp1 = Int32.Parse(vars[c]);
+            scorestrings = new String[integerTemp1];
+            for (x = 0; x < integerTemp1; x++)
+            {
+                //# let's check the current variable paired against the all the other values.
+                scores = new int[vars.Length];
+                for (v = 0; v < vars.Length; v++)
+                {
+                    //# but don't check it against itself.
+                    if (v == c)
+                    {
+                        scores[v] = 0;
+                        continue;
+                    }
+                    //# for any variable we've already chosen, we already know the pairing status
+                    //# and we just add that to the score.
+                    if (v < c)
+                    {
+                        StringBuilder caseValuesIndex = new StringBuilder();
+                        caseValuesIndex.Append(casevalues[v]);
+                        caseValuesIndex.Append("-"); //$NON-NLS-1$
+                        caseValuesIndex.Append(x);
+
+                        StringBuilder pairsIndex = new StringBuilder();
+                        pairsIndex.Append(v);
+                        pairsIndex.Append("-"); //$NON-NLS-1$
+                        pairsIndex.Append(c);
+
+                        Hashtable h = (Hashtable) pairs[pairsIndex.ToString()];
+                        Int32 temp2 = (Int32) h[caseValuesIndex.ToString()];
+
+
+                        scores[v] = temp2;
+                    }
+                        //# for the variables we haven't yet chosen, we walk through those values and see what the best pairing score will be.
+                    else
+                    {
+                        best = "x"; //$NON-NLS-1$
+                        Int32 tempInteger3 = Int32.Parse(vars[v]);
+                        for (y = 0; y < tempInteger3; y++)
+                        {
+                            StringBuilder cvIndex = new StringBuilder();
+                            cvIndex.Append(c);
+                            cvIndex.Append("-"); //$NON-NLS-1$
+                            cvIndex.Append(v);
+
+                            StringBuilder xyIndex = new StringBuilder();
+                            xyIndex.Append(x);
+                            xyIndex.Append("-"); //$NON-NLS-1$
+                            xyIndex.Append(y);
+                            Hashtable h = (Hashtable) pairs[cvIndex.ToString()];
+                            Int32 caseValue4 = (Int32) h[xyIndex.ToString()];
+                            int bestIntegerValue;
+                            if (best.Equals("x"))
+                            {
+                                  bestIntegerValue = 1;
+                            }
+                            else
+                            {
+                                bestIntegerValue = Int32.Parse(best);
+                            }
+
+                            //Int32 bestInteger1 = int.Parse(best);
+
+                            if (best.Equals("x") || (caseValue4 < bestIntegerValue))
+                            {
+                                  best = Convert.ToString(caseValue4);
+                            }
+                        }
+                        if (best.Equals("x"))
+                        {
+                              scores[v] = 0;
+                        }
+                        else
+                        {
+                            scores[v] = Int32.Parse(best) + 0;
+                        }
+                    }
+                }
+
+
+                //# now create a sorted string of scores for the value ($x) of current variable ($c) vs. values ($y) of each other variable ($v)
+                Array.Sort(scores);
+
+                int sizeOfScores = scores.Length;
+                StringBuilder scoreStringsBuffer = new StringBuilder();
+                for (int i = 0; i < sizeOfScores; i++)
+                {
+                    int score = scores[i];
+                    StringBuilder scoreBuffer = new StringBuilder();
+                    scoreBuffer.Append(score);
+
+                    StringBuilder sBuffer = new StringBuilder();
+                    sBuffer.Append(zeros[4 - scoreBuffer.Length]);
+                    sBuffer.Append(score);
+                    sBuffer.Append("\t"); //$NON-NLS-1$
+                    scoreStringsBuffer.Append(sBuffer.ToString());
+                }
+                int sLength = scoreStringsBuffer.Length;
+                scoreStringsBuffer.Remove(sLength - 1, 1);
+                StringBuilder xBuffer = new StringBuilder();
+                xBuffer.Append(x);
+
+                scoreStringsBuffer.Append(":"); //$NON-NLS-1$
+                scoreStringsBuffer.Append(zeros[4 - xBuffer.Length]);
+                scoreStringsBuffer.Append(x);
+                scorestrings[x] = scoreStringsBuffer.ToString();
+            }
+
+
+            //# the scores for each choice are now in a set of strings of the form {score}:{choice}.
+            //# the next step is to sort the scorestrings, pick the best, and record that choice...
+              Array.Sort(scorestrings);
+            String[] sortedscorestrings = scorestrings;
+
+            String[] resultOfSplit_1 = ((String) sortedscorestrings[0]).Split(':'); //$NON-NLS-1$
+            int intResultOfSplit_1 = Int32.Parse(resultOfSplit_1[1]);
+            int result = intResultOfSplit_1 + 0;
+            casevalues[c] = Convert.ToString(result);
+            //# this monstrousity of a line of code records whether the best choice is a needed value or not. If the best choice
+            //# results in no unique pairings, then we call it "N" meaning it's the best choice, but really doesn't matter.
+            String[] resultOfSplit_2 = ((String) sortedscorestrings[0]).Split(':'); //$NON-NLS-1$
+            String[] resultOfSplit_3 = resultOfSplit_2[0].Split('\t'); //$NON-NLS-1$
+            //UPGRADE_TODO: Method 'java.util.Arrays.sort' was converted to 'System.Array.Sort' which has a different behavior. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1073_javautilArrayssort_javalangObject[]'"
+            Array.Sort(resultOfSplit_3);
+            String[] sortedResultOfSplit_3 = resultOfSplit_3;
+            String tempString = sortedResultOfSplit_3[1];
+            if (Int32.Parse(tempString) == 0)
+            {
+                neededvalues[c] = "Y"; //$NON-NLS-1$
+            }
+            else
+            {
+                neededvalues[c] = "N"; //$NON-NLS-1$
+            }
+
+            //# now construct the test case string and call findnext again.
+            caseSlug = ""; //$NON-NLS-1$
+            StringBuilder caseBuffer = new StringBuilder();
+
+            for (int i = 0; i < casevalues.Length; i++)
+            {
+                String casevalue = casevalues[i];
+                caseBuffer.Append(casevalue);
+                caseBuffer.Append("\t"); //$NON-NLS-1$
+            }
+            caseBuffer.Remove(caseBuffer.Length - 1, 1);
+            caseSlug = caseBuffer.ToString();
+            //# after the recursion bottoms out, it will unwind via this return statement.
+            return findnext(caseSlug);
+        }
+
+        private void status()
+        {
+            int c;
+            int v;
+            int x;
+            int y;
+
+
+            for (c = 0; c < vars.Length - 1; c++)
+            {
+                for (v = c + 1; v < vars.Length; v++)
+                {
+                    Int32 tempInteger1 = Int32.Parse(vars[c]);
+                    for (x = 0; x < tempInteger1; x++)
+                    {
+                        Int32 tempInteger2 = Int32.Parse(vars[v]);
+                        for (y = 0; y < tempInteger2; y++)
+                        {
+                            StringBuilder sBuffer = new StringBuilder();
+                            sBuffer.Append(labelsArray[c]);
+                            sBuffer.Append("\t"); //$NON-NLS-1$
+                            sBuffer.Append(labelsArray[v]);
+                            sBuffer.Append("\t"); //$NON-NLS-1$
+                            ArrayList array1 = gettable2("tables", c); //$NON-NLS-1$
+                            sBuffer.Append(array1[x]);
+                            sBuffer.Append("\t"); //$NON-NLS-1$
+                            ArrayList array2 = gettable2("tables", v); //$NON-NLS-1$
+                            sBuffer.Append(array2[y]);
+                            sBuffer.Append("\t"); //$NON-NLS-1$
+                            StringBuilder cvIndexBuffer = new StringBuilder();
+                            cvIndexBuffer.Append(c);
+                            cvIndexBuffer.Append("-"); //$NON-NLS-1$
+                            cvIndexBuffer.Append(v);
+
+                            Hashtable h1 = (Hashtable) pairs[cvIndexBuffer.ToString()];
+
+                            StringBuilder xyIndexBuffer = new StringBuilder();
+                            xyIndexBuffer.Append(x);
+                            xyIndexBuffer.Append("-"); //$NON-NLS-1$
+                            xyIndexBuffer.Append(y);
+
+                            sBuffer.Append(h1[xyIndexBuffer.ToString()]);
+                            sBuffer.Append("\t"); //$NON-NLS-1$
+                        }
+                    }
+                }
+            }
+        }
+
+        private ArrayList gettable1(String p_TableName, String p_Index)
+        {
+            String tablename = p_TableName;
+            if (p_Index.Equals("labels"))
+            {
+                //$NON-NLS-1$
+                return (ArrayList) labelsHt[tablename];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+
+        private ArrayList gettable2(String p_TableName, int p_Index)
+        {
+            String tablename = p_TableName;
+            int index = p_Index;
+
+            ArrayList array = (ArrayList) labelsHt[tablename];
+            return (ArrayList) lists[(string) array[index]];
+        }
+
+        private bool more()
+        {
+            int c = 0;
+            int v = 0;
+            int x = 0;
+            int y = 0;
+            for (c = 0; c < vars.Length - 1; c++)
+            {
+                for (v = c + 1; v < vars.Length; v++)
+                {
+                    Int32 tempInteger1 = Int32.Parse(vars[c]);
+                    for (x = 0; x < tempInteger1; x++)
+                    {
+                        Int32 tempInteger2 = Int32.Parse(vars[v]);
+                        for (y = 0; y < tempInteger2; y++)
+                        {
+                            StringBuilder cvIndex = new StringBuilder();
+                            StringBuilder xyIndex = new StringBuilder();
+                            cvIndex.Append(c);
+                            cvIndex.Append("-"); //$NON-NLS-1$
+                            cvIndex.Append(v);
+
+                            xyIndex.Append(x);
+                            xyIndex.Append("-"); //$NON-NLS-1$
+                            xyIndex.Append(y);
+
+                            Hashtable h = (Hashtable) pairs[(cvIndex.ToString())];
+                            Int32 tempValue = (Int32) h[xyIndex.ToString()];
+                            if (tempValue == 0)
+                            {
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        private String readable(String p_Case)
+        {
+            String newcase = ""; //$NON-NLS-1$
+            int t = 0;
+            String[] list = p_Case.Split('\t'); //$NON-NLS-1$
+            StringBuilder newCaseBuffer = new StringBuilder();
+            StringBuilder valueBuffer ;
+            //UPGRADE_ISSUE: The following fragment of code could not be parsed and was not converted. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1156'"
+            ArrayList combination = new ArrayList();
+            for (t = 0; t < list.Length; t++)
+            {
+                valueBuffer = new StringBuilder();
+                Int32 tempInteger10 = (Int32) listorderArray[t];
+                if (neededvalues[tempInteger10].Equals("N"))
+                {
+                    //$NON-NLS-1$
+                    newCaseBuffer.Append(newcase);
+                    newCaseBuffer.Append("~"); //$NON-NLS-1$
+
+                    valueBuffer.Append(newcase);
+                }
+                ArrayList array1 = gettable2("tables", tempInteger10); //$NON-NLS-1$
+                String listIndex = list[tempInteger10];
+                Int32 tempInteger1 = Int32.Parse(listIndex);
+                newCaseBuffer.Append(array1[tempInteger1]);
+
+                valueBuffer.Append(array1[tempInteger1]);
+                combination.Add(valueBuffer.ToString());
+
+                newCaseBuffer.Append("\t"); //$NON-NLS-1$
+            }
+            allPairsCombinations.Add(combination);
+            newcase = newCaseBuffer.ToString();
+            return newcase;
+        }
+
+        //UPGRADE_ISSUE: The following fragment of code could not be parsed and was not converted. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1156'"
+
+        private void maketables(List<string> p_UseCaseData, String p_TableName)
+        {
+            String tablename = p_TableName;
+            ArrayList data = new ArrayList(p_UseCaseData);
+            int index = 0;
+            int l_count = 0;
+
+            if (labelsHt.ContainsKey(tablename))
+                labelsHt.Remove(tablename);
+            labelsHt.Add(tablename, new ArrayList());
+
+            String label = (String) data[0];
+
+            String[] labelSplits = label.Split('\t'); //$NON-NLS-1$
+            for (int i = 0; i < labelSplits.Length; i++)
+            {
+                StringBuilder splitBuffer = new StringBuilder(labelSplits[i]);
+                if (listorderHt.ContainsKey(splitBuffer.ToString()))
+                    listorderHt.Remove(splitBuffer.ToString());
+                listorderHt.Add(splitBuffer.ToString(), l_count++);
+                //UPGRADE_ISSUE: The following fragment of code could not be parsed and was not converted. "ms-help://MS.VSCC.v80/dv_commoner/local/redirect.htm?index='!DefaultContextWindowIndex'&keyword='jlca1156'"
+                ArrayList arrayOfLabels = (ArrayList) labelsHt[tablename];
+                arrayOfLabels.Add(splitBuffer.ToString());
+                if (lists.ContainsKey(splitBuffer.ToString()))
+                    lists.Remove(splitBuffer.ToString());
+                lists.Add(splitBuffer.ToString(), new ArrayList());
+            }
+
+            index = 0;
+            int i2 = 1;
+
+            while (i2 < data.Count)
+            {
+                index = 0;
+                String values = (String) data[i2];
+                String[] splitValues = values.Split('\t'); //$NON-NLS-1$
+                for (int j = 0; j < splitValues.Length; j++)
+                {
+                    if (!splitValues[j].Equals(""))
+                    {
+                        ArrayList labelArray = (ArrayList) labelsHt[tablename];
+                        String labelElement = (String) labelArray[index];
+
+
+                        ArrayList arrayOfElements = (ArrayList) lists[labelElement];
+                        arrayOfElements.Add(splitValues[j]);
+                    }
+                    index++;
+                }
+                i2++;
+            }
+
+            //# reorder the variable lists by size, because the allpairs algorithm works better that way.
+            ArrayList tempArray = (ArrayList) labelsHt[tablename];
+
+            tempArray.Sort(new AnonymousClassComparator1(this));
+
+            index = 0;
+            for (i2 = 0; i2 < tempArray.Count; i2++)
+            {
+                listorderArray.Add(0);
+            }
+
+            for (i2 = 0; i2 < tempArray.Count; i2++)
+            {
+                Int32 listOrderIndex = listorderHt[(string) tempArray[i2]];
+                listorderArray[listOrderIndex] = index++;
+            }
+            vars = new String[tempArray.Count];
+            for (index = 0; index < tempArray.Count; index++)
+            {
+                ArrayList array2 = (ArrayList) lists[(string) tempArray[index]];
+                StringBuilder sBuffer = new StringBuilder();
+                sBuffer.Append(array2.Count);
+                vars[index] = sBuffer.ToString();
+            }
+        }
+
+        #region Nested type: AnonymousClassComparator
+
+        private class AnonymousClassComparator : IComparer
+        {
+            private AllPairsAlgorithm enclosingInstance;
+
+            public AnonymousClassComparator(AllPairsAlgorithm enclosingInstance)
+            {
+                InitBlock(enclosingInstance);
+            }
+
+            public AllPairsAlgorithm Enclosing_Instance
+            {
+                get { return enclosingInstance; }
+            }
+
+            #region IComparer Members
+
+            public virtual int Compare(Object o1, Object o2)
+            {
+                String s1 = (String) o1;
+                String s2 = (String) o2;
+                Int32 originalposition1 = Enclosing_Instance.listorderHt[s1];
+                Int32 originalposition2 = Enclosing_Instance.listorderHt[s2];
+
+                if (originalposition1 > originalposition2)
+                {
+                    return 1;
+                }
+                else if (originalposition1 < originalposition2)
+                {
+                    return - 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            #endregion
+
+            private void InitBlock(AllPairsAlgorithm enclosingInstance)
+            {
+                this.enclosingInstance = enclosingInstance;
+            }
+        }
+
+        #endregion
+
+    
+        #region Nested type: AnonymousClassComparator1
+
+        private class AnonymousClassComparator1 : IComparer
+        {
+            private AllPairsAlgorithm enclosingInstance;
+
+            public AnonymousClassComparator1(AllPairsAlgorithm enclosingInstance)
+            {
+                InitBlock(enclosingInstance);
+            }
+
+            public AllPairsAlgorithm Enclosing_Instance
+            {
+                get { return enclosingInstance; }
+            }
+
+            #region IComparer Members
+
+            public virtual int Compare(Object o1, Object o2)
+            {
+                String s1 = (String) o1;
+                String s2 = (String) o2;
+                ArrayList elements1 = (ArrayList) Enclosing_Instance.lists[s1];
+                ArrayList elements2 = (ArrayList) Enclosing_Instance.lists[s2];
+                Int32 numOfElements1 = elements1.Count;
+                Int32 numOfElements2 = elements2.Count;
+
+                if (numOfElements1 < numOfElements2)
+                {
+                    return 1;
+                }
+                else if (numOfElements1 > numOfElements2)
+                {
+                    return - 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+
+            #endregion
+
+            private void InitBlock(AllPairsAlgorithm enclosingInstance)
+            {
+                this.enclosingInstance = enclosingInstance;
+            }
+        }
+
+        #endregion
+    }
+}

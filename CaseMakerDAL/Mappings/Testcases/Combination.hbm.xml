@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases">
+  <class name="Combination" table="Combination" >
+    <id name="Id" column ="id" type="int" unsaved-value="0">
+      <generator class="identity"/>
+    </id>
+    <property name="Description" type="string"  column="description" />
+    <property name="Position" type="int"  column="position" not-null="true"  />
+	  <property name="RiskLevel" type="string"  column="riskLevel"  not-null="true"/>
+	  <property name="CurrentState"   column="state"  not-null="true"/>
+	  <property name="Origin"   column="origin"  not-null="true"/>
+    <many-to-one name="ParentDependency"
+      class="Dependency"
+      column="dependencyId"/>
+
+    <many-to-one name="ParentCombination"
+      class="Combination"
+      column="parentcombinationid"/>
+    
+    <bag name="Combinations" cascade="none" generic="true" inverse="true" lazy="true">
+      <key column="parentcombinationid" />
+      <!--<index column="id"/>-->
+      <one-to-many class="Combination" />
+    </bag>
+	  <bag name="EquivalenceClasses" table="Combs_EqClasses" cascade="none" lazy ="true">
+		  <key column="combinationid"/>
+		  <many-to-many column="equivalenceclassid" class="EquivalenceClass"/>
+	  </bag>
+
+	  <bag name="Effects" table="Combs_Effects" cascade="none" lazy ="true">
+		  <key column="combinationid"/>
+		  <many-to-many column="effectid" class="Effect"/>
+	  </bag>
+
+  </class>
+</hibernate-mapping>

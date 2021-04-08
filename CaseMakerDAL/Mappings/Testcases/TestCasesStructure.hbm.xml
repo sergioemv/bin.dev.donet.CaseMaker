@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping  xmlns="urn:nhibernate-mapping-2.2" assembly="CaseMakerBL" namespace="CaseMaker.Entities.Testcases" 
+					default-lazy="true">
+
+	<class name="TestCasesStructure" table="TestCasesStructure" >
+
+		<id name="Id" column="id">
+			<generator class="assigned"/>
+				
+		</id>
+    <property name="CreationDate" column="creationDate" type="DateTime" />
+    <property name="ModDate" column="modDate" type="DateTime" />
+	  <one-to-one name="ParentTestObject" class="CaseMaker.Entities.TestObject" constrained="true"/>
+	  <bag name="Elements" cascade="all-delete-orphan" generic="true" inverse="true" >
+			<key column="testObjectId" />
+			<!--<index column="id"/>-->
+			<one-to-many class="Element" />
+	  </bag>
+	   <bag name="Effects" cascade="all-delete-orphan" generic="true" inverse="true" >
+			<key column="structureId" />
+			<!--<index column="id"/>-->
+			<one-to-many class="Effect" />
+		</bag>
+    <bag name="Requirements" cascade="all-delete-orphan" generic="true" inverse="true" >
+      <key column="structureId" />
+      <!--<index column="id"/>-->
+      <one-to-many class="Requirement" />
+    </bag>
+	<bag name="Dependencies" cascade="all-delete-orphan" generic="true" inverse="true" >
+			<key column="structureId" />
+			<!--<index column="id"/>-->
+			<one-to-many class="Dependency" />
+	</bag>
+	<bag name="TestCases" cascade="all-delete-orphan" generic="true" inverse="true" >
+			<key column="structureid" />
+			<!--<index column="id"/>-->
+			<one-to-many class="TestCase" />
+	</bag>
+
+	<bag name="StdCombinations" cascade="all-delete-orphan" generic="true" inverse="true" >
+		<key column="structureid" />
+    <one-to-many class="StdCombination" />
+	</bag>
+
+    <set name="Permissions" cascade="all-delete-orphan" generic="true" inverse="true" lazy="true" >
+      <key column="structure" />
+      <one-to-many class="CaseMaker.Entities.Administration.Permission" />
+    </set>
+  </class>
+	
+</hibernate-mapping>
